@@ -1,16 +1,14 @@
 package com.coderscampus.userfunctions;
 
 import java.io.*;
-import com.coderscampus.fileinformation.FileServiceInterface;
 import com.coderscampus.user.User;
 
-public class UserFromFile implements FileServiceInterface {
+public class UserFromFile {
 
 	private BufferedReader reader = null;
 	private static String line = null;
 	private static String[] userinfoArray;
 
-	@Override
 	public String getUserInformationFromFile(String fileName) throws IOException {
 		try {
 			reader = new BufferedReader(new FileReader(fileName));
@@ -27,20 +25,20 @@ public class UserFromFile implements FileServiceInterface {
 	private String getuserInformation() throws IOException {
 
 		while ((line = reader.readLine()) != null) {
-			System.out.println(line);
+			//System.out.println(line);
 			User user = new User();
 			userinfoArray = line.split(",");
 			user.setUsername(userinfoArray[0]);
 			user.setPassword(userinfoArray[1]);
 			user.setName(userinfoArray[2]);
 			user.setRole(userinfoArray[3]);
+			UserLogin userlogin = new UserLogin();
+			userlogin.getUserLogin("Enter your username: ", user.getName());
+			userlogin.getUserLogin("Enter your password: ", user.getPassword());
+
 		}
 		return line;
-			
+
 	}
 
-	@Override
-	public void UpdateUserInformationToFile(File file, String line) throws IOException {
-		// TODO Auto-generated method stub
-	}
 }

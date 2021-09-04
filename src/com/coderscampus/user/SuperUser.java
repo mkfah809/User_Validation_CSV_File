@@ -1,26 +1,11 @@
 package com.coderscampus.user;
-public class SuperUser extends User  {
 
-	public SuperUserInterface buildUser(User[] users) {
-		
-		NormalUser normalUser = null;
-		SuperUser superUser = null;
-
-		for (User user : users) {
-			if (user instanceof NormalUser) {
-				normalUser = (NormalUser) user;
-			} else if (user instanceof SuperUser) {
-				superUser = (SuperUser) user;
-			}
-		}
-		if(normalUser != null) {
-			User user = new User();
-			
-		}
-		return null;
-		
-	}
-
+public class SuperUser extends User{
 	
-
+	public SuperUser (String username, String password, String name) {
+		this.setUsername(username);
+		this.setPassword(password);
+		this.setName(name);
+		this.role = "super_user";
+	}
 }

@@ -2,11 +2,9 @@ package com.coderscampus.userfunctions;
 
 import java.util.Scanner;
 
-import com.coderscampus.user.SuperUserInterface;
+public class  UserLogin  {
 
-public class  UserLogin implements SuperUserInterface {
-
-	@Override
+	
 	public String getUserLogin(String username, String password) {
 		@SuppressWarnings("resource")
 		Scanner login = new Scanner(System.in);
@@ -14,19 +12,4 @@ public class  UserLogin implements SuperUserInterface {
 		return userLogin;
 		
 	}
-
-	@Override
-	public String updateUserInformationToFile(String oldInput) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-
-
-
-
-
-
 }

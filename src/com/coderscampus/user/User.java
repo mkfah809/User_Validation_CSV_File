@@ -1,10 +1,10 @@
 package com.coderscampus.user;
 
-public class User implements Comparable<User>{
+public class User {
 	private String username;
 	private String password;
 	private String name;
-	private String role;
+	public String role;
 	/**
 	 * @return the username
 	 */
@@ -53,9 +53,5 @@ public class User implements Comparable<User>{
 	public void setRole(String role) {
 		this.role = role;
 	}
-	@Override
-	public int compareTo(User that) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 }
