@@ -1,9 +1,9 @@
 package com.coderscampus.user;
 
 public class User {
-	private String username;
-	private String password;
-	private String name;
+	public String username;
+	public String password;
+	public String name;
 	public String role;
 	/**
 	 * @return the username

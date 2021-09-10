@@ -1,6 +1,6 @@
 package com.coderscampus.user;
 
-public class SuperUser extends User{
+public class SuperUser extends User {
 	
 	public SuperUser (String username, String password, String name) {
 		this.setUsername(username);
