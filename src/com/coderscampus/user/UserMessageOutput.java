@@ -1,7 +1,7 @@
 package com.coderscampus.user;
 
 public class UserMessageOutput {
-	private static String[] OutputMessage = new String[10];
+	private static String[] OutputMessage = new String[30];
 
 	public static void invalidloginMessage(int invalidloginmesssageid) {
 		
@@ -30,5 +30,30 @@ public class UserMessageOutput {
 			System.out.println(OutputMessage[2]);
 		}
 	}
-
+	public static void loginasanotheruserMessage(int loginasanotherusermesssageid) {
+		OutputMessage[3] = "[0] Log in as another user";
+		if (loginasanotherusermesssageid == 3) {
+			System.out.println(OutputMessage[3]);
+		}
+		
+	}
+	public static void updateusernameMessage(int updateusernamemesssageid) {
+		OutputMessage[4] = "[1] Update username";
+		if (updateusernamemesssageid == 4) {
+			System.out.println(OutputMessage[4]);
+		}
+	}
+	public static void updatepasswordMessage(int updatepasswordmesssageid) {
+		OutputMessage[5] = "[2] Update password";
+		if (updatepasswordmesssageid == 5) {
+			System.out.println(OutputMessage[5]);
+		}
+	}
+	public static void updatenameMessage(int updatenamemesssageid) {
+		OutputMessage[6] = "[3] Update name";
+		if (updatenamemesssageid == 6) {
+			System.out.println(OutputMessage[6]);
+		}
+	}
+	
 }
