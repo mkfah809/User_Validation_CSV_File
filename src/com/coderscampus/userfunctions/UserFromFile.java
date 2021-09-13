@@ -18,9 +18,10 @@ public class UserFromFile {
 	private static String[] userinfoArray; // For the file fetch
 	static User[] users = new User[20]; // For the first for each
 	static User[] userPerson; // // For the second for each
-	//private static Integer count;
+	// private static Integer count;
 	private static Boolean userFound = false;
-
+	private static String lineReader;
+	static BufferedReader fileReader = null;
 	/*
 	 * @SuppressWarnings({ "static-access" }) static void getValidation() { if
 	 * (invalidLogin == 4 && userFound.FALSE) { UserMessageOutput.lockoutMessage(2);
@@ -37,8 +38,7 @@ public class UserFromFile {
 		for (User user : users) {
 			userFound = true;
 			welcomeUser = user.getName();
-			if (userUsername.equals(user.getUsername()) &&
-					userPassword.equals(user.getPassword())) {
+			if (userUsername.equals(user.getUsername()) && userPassword.equals(user.getPassword())) {
 				userRole = user.getRole();
 				UserMessageOutput.validloginMessage(1, welcomeUser);
 				if (userRole.equals(user.getRole())) {
@@ -62,7 +62,8 @@ public class UserFromFile {
 		}
 		Scanner userinputList = new Scanner(System.in);
 		Integer inputList = userinputList.nextInt();
-
+		System.out.println("What are the users that shown in the file here: \n -------------");
+		System.out.println(line);
 		if (inputList == 0) {
 			Scanner userinputUsername = new Scanner(System.in);
 			System.out.println("Which user would you like to login as? (Type in a valid username)");
@@ -72,27 +73,35 @@ public class UserFromFile {
 //			An Array needs to hold the person-user to fetch all the new user in it.
 			userPerson = users;
 			User person = new User();
+			// while ((lineReader = fileReader.readLine()) != null) {
+			// userinfoArray = lineReader.split(",");
+
+			// }
+			UserMessageOutput.validloginMessage(1, person.getName());
 			person.setUsername(userinfoArray[0]);
 			person.setPassword(userinfoArray[1]);
 			person.setName(userinfoArray[2]);
 			person.setRole(userinfoArray[3]);
-			System.out.println(person.getName());
 			for (User persons : userPerson) {
+				userFound = true;
+				welcomenormaluserfromSuper = persons.getUsername();
+				System.out.println("userUsername NOW = " + userUsername);
+				
 				
 				if (userUsername.equals(welcomenormaluserfromSuper))
-						//&& userRole.equals(persons.getRole())) 
+				// && userRole.equals(persons.getRole()))
 				{
-					userFound = true;
-					welcomeUser = persons.getName();
+					// userFound = true;
+					// welcomeUser = persons.getName();
 					userRole = persons.getRole();
-					welcomenormaluserfromSuper = welcomeUser;
 					UserMessageOutput.validloginMessage(1, welcomenormaluserfromSuper);
 					break;
 				} else {
 					userFound = false;
 					System.out.println("Does " + userUsername + " = " + welcomenormaluserfromSuper + "?");
+					break;
 				}
-			} 
+			}
 
 		} else if (inputList == 1) {
 
@@ -108,20 +117,20 @@ public class UserFromFile {
 
 	@SuppressWarnings("null")
 	static void getuserreadInfo() throws IOException {
-		BufferedReader fileReader = null;
+
 		try {
 			fileReader = new BufferedReader(new FileReader("UserData.txt"));
 			while ((line = fileReader.readLine()) != null) {
 				// System.out.println(line);
 				User user = new User();
-				//User person = new User();
+				// User person = new User();
 				userinfoArray = line.split(",");
 				user.setUsername(userinfoArray[0]);
 				user.setPassword(userinfoArray[1]);
 				user.setName(userinfoArray[2]);
 				user.setRole(userinfoArray[3]);
 				users[countLine] = user;
-				//users[count] = person;
+				// users[count] = person;
 				countLine++;
 				if (countLine == 20) {
 					break;
