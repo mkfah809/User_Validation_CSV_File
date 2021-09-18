@@ -3,15 +3,8 @@ package com.coderscampus.userfunctions;
 import java.util.Scanner;
 
 public class UserLogin {
-//	@SuppressWarnings("unused")
-//	private static String userUsername;
-//	@SuppressWarnings("unused")
-//	private static String userpassword;
-//
-	static Integer[] listofOption = new Integer[5];
-	private static String userUsername = "";
-	private static String userPassword = "";
-	
+
+	static Integer[] listofOption = new Integer[5];	
 	private static String getUserLogin(String promptMsg) {
 		@SuppressWarnings("resource")
 		Scanner login = new Scanner(System.in);
@@ -20,11 +13,11 @@ public class UserLogin {
 		return userLogin;
 	}
 
-	public static void getpromptUser(Integer listoptinID) {
+	public static void getpromptUser(Integer listoptinID/* , String userUsername, String userPassword */) {
 		listofOption[1] = 1;
-		if(listoptinID ==1) {
-			userUsername = getUserLogin("Enter your username: ");
-			userPassword = getUserLogin("Enter your password: ");
+		if(listoptinID ==1) { 
+			String userUsername = getUserLogin("Enter your username: ");
+			String userPassword = getUserLogin("Enter your password: ");
 		}
 	}
 
