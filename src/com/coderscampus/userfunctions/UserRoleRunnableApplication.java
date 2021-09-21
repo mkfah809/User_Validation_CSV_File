@@ -12,6 +12,5 @@ public class UserRoleRunnableApplication {
 	public static void main(String[] args) throws IOException {
 		UserServices.getuserfromFile(0);
 		UserServices.getUser(0);
-	
 	}
 }

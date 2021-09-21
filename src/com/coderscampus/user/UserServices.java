@@ -3,10 +3,12 @@ package com.coderscampus.user;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 import com.coderscampus.userfunctions.UserLogin;
 
 public class UserServices {
+
 	private static Integer[] userfunctionsArray = new Integer[3];
 	private static User[] users = new User[20]; // For the first for each
 	private static String[] userinfoArray;
@@ -47,18 +49,26 @@ public class UserServices {
 		}
 	}
 
+	public static String getpromptUser(String promptMsg, String userLogin) {
+		@SuppressWarnings("resource")
+		Scanner login = new Scanner(System.in);
+		System.out.println(promptMsg);
+		 userLogin = login.nextLine();
+		return userLogin;
+	}
 	
 	public static void getUser(int userfunctionsarrayID) throws IOException {
-		UserLogin.getpromptUser(1);
 		userfunctionsArray[1] = 1;
 		userfunctionsarrayID = 1;
 		if (userfunctionsarrayID == 1) {
-//			userUsername = user.getUsername();
-//			userPassword = user.getPassword();
-//			welcomeUser = user.getName();
 			for (User user : users) {
+				userUsername =	getpromptUser("Enter your username: ",user.getUsername());
+				userPassword =  getpromptUser("Enter your username: ",user.getPassword());
+				System.out.println(user.getName());
+//				userUsername = user.getUsername();
+//				userPassword = user.getPassword();
+//				welcomeUser = user.getName();
 				System.out.println(userUsername + " - " + userPassword);
-
 				if (userUsername.equals(user.getUsername()) && userPassword.equals(user.getPassword())) {
 					userRole = user.getRole();
 					UserMessageOutput.validloginMessage(1, welcomeUser);
@@ -69,5 +79,6 @@ public class UserServices {
 				}
 			}
 		}
+
 	}
 }
