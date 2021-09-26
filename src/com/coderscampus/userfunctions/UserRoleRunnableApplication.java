@@ -25,13 +25,14 @@ public class UserRoleRunnableApplication {
 					System.out.println("\nPlease choose from the following options: ");
 					getuserprivilege();
 					String updateUsername = UpdateUserInformation.getupdateUsername();
-					System.out.println("The updated username is: " + updateUsername);
+					System.out.println("Username has Updated Succesfully\n your new username is "+ updateUsername);
 				} else {
 					UserPrivileges.getnormaluserPrivilege();
 				}
 			} else {
 				continue;
 			}
+			System.out.println("Done");
 		}
 
 	}
