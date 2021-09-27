@@ -1,12 +1,7 @@
 package com.coderscampus.userfunctions;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.Scanner;
-
-import com.coderscampus.personcomparable.Person;
-import com.coderscampus.user.User;
 
 public class UpdateUserInformation {
 	static Scanner updateInput = new Scanner(System.in);
@@ -43,16 +38,4 @@ public class UpdateUserInformation {
 		System.out.println("New Name is: " + updatedName);
 	}
 	
-	public static void getwriteintoFile() {
-		User user = new User();
-		User mina = 
-		User karam = new User("Mina Page", 70);
-		Person fahmy = new Person("Mina Page", 70);
-		try (FileOutputStream fileoutput = new FileOutputStream("UserData.txt");
-				ObjectOutputStream objectOutput = new ObjectOutputStream(fileoutput);) {
-			objectOutput.writeObject(mina);
-			objectOutput.writeObject(karam);
-			objectOutput.writeObject(fahmy);
-		}
-	}
 }

@@ -3,7 +3,6 @@ package com.coderscampus.userfunctions;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import com.coderscampus.user.NormalUser;
 import com.coderscampus.user.User;
 import com.coderscampus.user.UserMessageOutput;
 
