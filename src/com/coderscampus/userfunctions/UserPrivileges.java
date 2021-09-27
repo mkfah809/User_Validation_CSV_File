@@ -5,9 +5,7 @@ import com.coderscampus.user.UserMessageOutput;
 public class UserPrivileges {
 
 	public static void getsuperuserPrivilege() {
-
 		UserMessageOutput.loginasanotheruserMessage(3);
-		
 	}
 
 	public static void getnormaluserPrivilege() {

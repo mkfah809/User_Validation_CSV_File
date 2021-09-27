@@ -36,14 +36,23 @@ public class UserLogin {
 					UserMessageOutput.validloginMessage(1, welcomeUser);
 					System.out.println("--------------------------------------\n\r");
 				}
-				return anotheruserUsername;
 			}
-		} else if(userOption ==1) {
+			return anotheruserUsername;
+		} else if (userOption == 1) {
 			String updatedUsername = UpdateUserInformation.getupdateUsername();
-			System.out.println("updated username is - "+updatedUsername);
+			System.out.println("Your updated username is: " + updatedUsername);
 			return updatedUsername;
-			
-			}
-		return "My fart is silence, but killing!";
+		} else if (userOption == 2) {
+			String updatedPassword = UpdateUserInformation.getupdatePassword();
+			System.out.println("Your updated password is - " + updatedPassword);
+			return updatedPassword;
+		} else if (userOption == 3) {
+			String updatedName = UpdateUserInformation.getupdateName();
+			System.out.println("Your updated password is - " + updatedName);
+			return updatedName;
+		} else {
+			System.exit(0);
+		} return "Invalid Entry, Please try again!";
+			 
 	}
 }
