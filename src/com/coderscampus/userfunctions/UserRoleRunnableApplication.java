@@ -24,25 +24,24 @@ public class UserRoleRunnableApplication {
 					System.out.println("------------------------");
 					System.out.println("\nPlease choose from the following options: ");
 					getuserprivilege();
-					String updateUsername = UpdateUserInformation.getupdateUsername();
-					System.out.println("Username has Updated Succesfully\n your new username is "+ updateUsername);
+					String loginwithanotherUsername = UserLogin.getloginasanyUser(0);
+					System.out.println("Succesfully logged in as another user!");
+					System.out.println("Welcome: " + loginwithanotherUsername);
+					UserPrivileges.getnormaluserPrivilege();
+					String updatedUsername = UserLogin.getloginasanyUser(1);
 				} else {
 					UserPrivileges.getnormaluserPrivilege();
 				}
 			} else {
 				continue;
 			}
-			System.out.println("Done");
 		}
 
 	}
 
-
 	private static void getuserprivilege() throws IOException {
 		UserPrivileges.getsuperuserPrivilege();
 		UserPrivileges.getnormaluserPrivilege();
-		
-		
 	}
 
 }

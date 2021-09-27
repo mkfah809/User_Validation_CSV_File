@@ -21,27 +21,29 @@ public class UserLogin {
 		UserLogin.getpromptUser("Enter your password: ");
 	}
 
-	public static String getloginasanyUser(/* int userOption */) throws IOException {
+	public static String getloginasanyUser(int userOption) throws IOException {
 		// everytime reads welcomeUser with Null
-		int userOption = login.nextInt();
+		userOption = login.nextInt();
+		String anotheruserUsername = null;
 		if (userOption == 0) {
 			User[] users = new User[20];
 			users = getFile.getuserfromFile();
-			String userUsername = getpromptUser("Enter a username you want to login with: ");
-			userUsername = login.nextLine();
-			System.out.println("login nextline is " + userUsername);
+			anotheruserUsername = getpromptUser("Enter a username you want to login with: ");
+			anotheruserUsername = login.nextLine();
 			for (User user : users) {
-				if (userUsername.equals(user.getUsername())) {
+				if (anotheruserUsername.equals(user.getUsername())) {
 					welcomeUser = user.getName();
 					UserMessageOutput.validloginMessage(1, welcomeUser);
 					System.out.println("--------------------------------------\n\r");
-					return userUsername;
 				}
+				return anotheruserUsername;
 			}
-		} else if (userOption == 1) {
-			UpdateUserInformation.getupdateUsername();
-			return welcomeUser;
-		}
-		return "null";
+		} else if(userOption ==1) {
+			String updatedUsername = UpdateUserInformation.getupdateUsername();
+			System.out.println("updated username is - "+updatedUsername);
+			return updatedUsername;
+			
+			}
+		return "My fart is silence, but killing!";
 	}
 }
