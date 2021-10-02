@@ -13,7 +13,6 @@ public class UserLogin {
 	public static String getpromptUser(String promptMsg) {
 		System.out.println(promptMsg);
 		return login.nextLine();
-		// return userLogin;
 	}
 
 	public static void getUserLogin() {
@@ -27,7 +26,7 @@ public class UserLogin {
 		String anotheruserUsername = null;
 		if (userOption == 0) {
 			User[] users = new User[20];
-			users = getFile.getuserfromFile();
+			users = GetandWriteFile.getuserfromFile();
 			anotheruserUsername = getpromptUser("Enter a username you want to login with: ");
 			anotheruserUsername = login.nextLine();
 			for (User user : users) {
@@ -40,15 +39,15 @@ public class UserLogin {
 			return anotheruserUsername;
 		} else if (userOption == 1) {
 			String updatedUsername = UpdateUserInformation.getupdateUsername();
-			System.out.println("Your updated username is: " + updatedUsername);
+			System.out.println("Username succesfully updated!");
 			return updatedUsername;
 		} else if (userOption == 2) {
 			String updatedPassword = UpdateUserInformation.getupdatePassword();
-			System.out.println("Your updated password is - " + updatedPassword);
+			System.out.println("Password succesfully updated!");
 			return updatedPassword;
 		} else if (userOption == 3) {
 			String updatedName = UpdateUserInformation.getupdateName();
-			System.out.println("Your updated password is - " + updatedName);
+			System.out.println("Name succesfully updated!");
 			return updatedName;
 		} else {
 			System.exit(0);

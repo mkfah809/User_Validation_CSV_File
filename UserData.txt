@@ -3,7 +3,7 @@ sbmrjbr@comcast.net,kWRj6Kd5,Gail Daniels,super_user
 baveja@icloud.com,s4ryQX8d,Toby Lyons,normal_user
 bflong@live.com,jD8MuA5y,Shannon Wallace,normal_user
 biglou@live.com,8Cn7KY2S,Shirley Salazar,normal_user
-biglou@live.com,8Cn7KY2S,Shirley Salazar,normal_user
+mina@gmail.com,A4QXA,Mina Fahmy,normal_user
 bsikdar@sbcglobal.net,mVtSTP7A,Gertrude Meyer,normal_user
 cgreuter@yahoo.com,Bd8ems8k,Jared Obrien,normal_user
 chrisj@comcast.net,YWkcJ3Lf,Ron Hunter,normal_user

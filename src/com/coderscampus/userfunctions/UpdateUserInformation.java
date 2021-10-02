@@ -3,6 +3,9 @@ package com.coderscampus.userfunctions;
 import java.io.IOException;
 import java.util.Scanner;
 
+import com.coderscampus.user.NormalUser;
+import com.coderscampus.user.User;
+
 public class UpdateUserInformation {
 	static Scanner updateInput = new Scanner(System.in);
 
@@ -24,8 +27,10 @@ public class UpdateUserInformation {
 		return updatedName;
 	}
 
-	public static void getupdateduserRecord(String updatedUsername, String updatedPassword, String updatedName)
-			throws IOException {
+	public static String[] getupdateduserRecord(String updatedUsername,String updatedPassword,String updatedName) throws IOException {
+
+		String[] updatedthisRecord = new String[4];
+		String line = "";
 		UserPrivileges.getnormaluserPrivilege();
 		updatedUsername = UserLogin.getloginasanyUser(1); // holds updated username
 		UserPrivileges.getnormaluserPrivilege();
@@ -33,9 +38,10 @@ public class UpdateUserInformation {
 		UserPrivileges.getnormaluserPrivilege();
 		updatedName = UserLogin.getloginasanyUser(3); // holds updated user name
 		System.out.println("The current user has been updated successfully");
-		System.out.println("New Userame is: " + updatedUsername);
-		System.out.println("New Password is: " + updatedPassword);
-		System.out.println("New Name is: " + updatedName);
+		// updatedthisRecord = line.split(",");
+		
+		System.out.println(updatedUsername + "," + updatedPassword + "," + updatedName + "," + "normal_user");
+		return updatedthisRecord;
 	}
-	
+
 }
