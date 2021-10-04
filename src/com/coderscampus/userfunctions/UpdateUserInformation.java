@@ -27,9 +27,10 @@ public class UpdateUserInformation {
 		return updatedName;
 	}
 
-	public static String[] getupdateduserRecord(String updatedUsername,String updatedPassword,String updatedName) throws IOException {
+	public static String getupdateduserRecord(String updatedUsername, String updatedPassword, String updatedName)
+			throws IOException {
 
-		String[] updatedthisRecord = new String[4];
+		String[] updatedthisRecord = new String[6];
 		String line = "";
 		UserPrivileges.getnormaluserPrivilege();
 		updatedUsername = UserLogin.getloginasanyUser(1); // holds updated username
@@ -38,10 +39,16 @@ public class UpdateUserInformation {
 		UserPrivileges.getnormaluserPrivilege();
 		updatedName = UserLogin.getloginasanyUser(3); // holds updated user name
 		System.out.println("The current user has been updated successfully");
-		// updatedthisRecord = line.split(",");
-		
-		System.out.println(updatedUsername + "," + updatedPassword + "," + updatedName + "," + "normal_user");
-		return updatedthisRecord;
+//		updatedthisRecord[0] = updatedUsername;
+//		updatedthisRecord[1] = updatedPassword;
+//		updatedthisRecord[2] = updatedName;
+//		updatedthisRecord[3] = "normal_user";
+//		System.out.println(updatedthisRecord);
+		String outputintoaFile = updatedUsername+"," 
+								+updatedPassword+","
+								+updatedName    +","
+								+"normal_user";
+		return outputintoaFile;
 	}
 
 }

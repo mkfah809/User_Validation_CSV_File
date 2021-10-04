@@ -9,13 +9,9 @@ public class UserRoleRunnableApplication {
 
 	public static void main(String[] args) throws IOException {
 		String userUsername = "";
-		String[] updatedthisRecord = new String[4];
 		String userPassword = "";
 		String userRole = "";
 		String welcomeUser = "";
-		String updatedUsername = "";
-		String updatedPassword = "";
-		String updatedName = "";
 		User[] users = new User[20];
 		users = GetandWriteFile.getuserfromFile();
 		userUsername = UserLogin.getpromptUser("Enter your username: ");
@@ -25,6 +21,7 @@ public class UserRoleRunnableApplication {
 				userRole = user.getRole();
 				welcomeUser = user.getName();
 				UserMessageOutput.validloginMessage(1, welcomeUser);
+			
 				if (userRole.equals("super_user")) {
 					System.out.println("------------------------");
 					System.out.println("\nPlease choose from the following options: ");
@@ -33,12 +30,12 @@ public class UserRoleRunnableApplication {
 					String loginwithanotherUsername = UserLogin.getloginasanyUser(0); // holds the another account
 					System.out.println("Succesfully logged in as another user!");
 					System.out.println("Welcome: " + loginwithanotherUsername);
-					updatedthisRecord = UpdateUserInformation.getupdateduserRecord(updatedUsername, updatedPassword,
-							updatedName);
 					GetandWriteFile.gettoWriteintoafile();
+					
+					break;
 				}
 			} else {
-
+				System.out.println("I am not super user");
 				System.out.println("I am a normal user");
 
 //					System.out.println("\nPlease choose from the following options: ");

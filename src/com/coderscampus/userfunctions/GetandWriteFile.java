@@ -2,11 +2,9 @@ package com.coderscampus.userfunctions;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 
 import com.coderscampus.user.User;
 
@@ -41,23 +39,23 @@ public class GetandWriteFile {
 		return users;
 	}
 
-	public static String[] gettoWriteintoafile() throws IOException {
-		String[] thisUser = new String[4];
+	public static String gettoWriteintoafile() throws IOException {
+		String thisUser = null;
 		String updatedUsername = "";
 		String updatedPassword = "";
 		String updatedName = "";
 		thisUser = UpdateUserInformation.getupdateduserRecord(updatedUsername, updatedPassword, updatedName);
-		FileWriter fstream = new FileWriter("UserData.txt", true);
-		BufferedWriter out = new BufferedWriter(fstream);
+		FileWriter fileWriter = new FileWriter("UserData.txt", true);
+		BufferedWriter printintoFile = new BufferedWriter(fileWriter);
 		try {
-			out.write("\n" + thisUser);
-			out.close();
+			printintoFile.write("\n" + thisUser);
+			
 		} catch (Exception e) {
 			System.err.println("Error while writing to file: " + e.getMessage());
 		} finally {
-			out.close();
+			printintoFile.close();
 		}
-		System.out.println(thisUser);
+		
 
 		return thisUser;
 	}
