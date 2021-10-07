@@ -5,6 +5,8 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import com.coderscampus.user.User;
 
@@ -39,24 +41,46 @@ public class GetandWriteFile {
 		return users;
 	}
 
-	public static String gettoWriteintoafile() throws IOException {
-		String thisUser = null;
-		String updatedUsername = "";
-		String updatedPassword = "";
-		String updatedName = "";
-		thisUser = UpdateUserInformation.getupdateduserRecord(updatedUsername, updatedPassword, updatedName);
+	public static User gettoWriteintoafile() throws IOException {
+		User thisUser = null;
+//		String updatedUsername = "";
+//		String updatedPassword = "";
+//		String updatedName = "";
+		UpdateUserInformation updateUserInformation = new UpdateUserInformation();
+		thisUser = updateUserInformation.getupdateRecord();
+		//thisUser = UpdateUserInformation.getupdateduserRecord(updatedUsername, updatedPassword, updatedName);
 		FileWriter fileWriter = new FileWriter("UserData.txt", true);
 		BufferedWriter printintoFile = new BufferedWriter(fileWriter);
 		try {
 			printintoFile.write("\n" + thisUser);
-			
+			GetandWriteFile sortUser = new GetandWriteFile();
+			sortUser.sortatextFile();
+
 		} catch (Exception e) {
 			System.err.println("Error while writing to file: " + e.getMessage());
 		} finally {
+
 			printintoFile.close();
 		}
-		
 
 		return thisUser;
+	}
+
+	private void sortatextFile() throws IOException {
+		BufferedReader reader = new BufferedReader(new FileReader("people.txt"));
+		ArrayList<String> lineList = new ArrayList<>();
+		String line = "";
+		while ((line = reader.readLine()) != null) {
+			lineList.add(line);
+		}
+		reader.close();
+		FileWriter writer = new FileWriter("people.txt");
+		System.out.println("----------");
+		for (String outputLine : lineList) {
+			writer.write(outputLine);
+			System.out.println(outputLine);
+			Collections.sort(lineList);
+		}
+		writer.close();
 	}
 }

@@ -27,7 +27,7 @@ public class UserRoleRunnableApplication {
 					System.out.println("\nPlease choose from the following options: ");
 					getuserprivilege();
 
-					String loginwithanotherUsername = UserLogin.getloginasanyUser(0); // holds the another account
+					String loginwithanotherUsername = UserLogin.getloginasanyUser(0); // holds another account
 					System.out.println("Succesfully logged in as another user!");
 					System.out.println("Welcome: " + loginwithanotherUsername);
 					GetandWriteFile.gettoWriteintoafile();
