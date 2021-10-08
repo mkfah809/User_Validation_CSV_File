@@ -1,4 +1,4 @@
-package com.coderscampus.userfunctions;
+package com.coderscampus.userfunction;
 
 import java.io.IOException;
 import java.util.Scanner;

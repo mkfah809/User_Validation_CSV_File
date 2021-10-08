@@ -1,4 +1,4 @@
-package com.coderscampus.userfunctions;
+package com.coderscampus.userfunction;
 
 import com.coderscampus.user.UserMessageOutput;
 

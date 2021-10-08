@@ -7,5 +7,10 @@ public class NormalUser extends User{
 		UserMessageOutput.updatepasswordMessage(5);
 		UserMessageOutput.updatenameMessage(6);
 	}
+	
+	public static User testMethodDoingNothing() {
+		return null;
+		
+	}
 
 }

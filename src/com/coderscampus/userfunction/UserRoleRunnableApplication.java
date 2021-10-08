@@ -1,4 +1,4 @@
-package com.coderscampus.userfunctions;
+package com.coderscampus.userfunction;
 
 import java.io.IOException;
 
@@ -26,12 +26,12 @@ public class UserRoleRunnableApplication {
 					System.out.println("------------------------");
 					System.out.println("\nPlease choose from the following options: ");
 					getuserprivilege();
-
 					String loginwithanotherUsername = UserLogin.getloginasanyUser(0); // holds another account
 					System.out.println("Succesfully logged in as another user!");
-					System.out.println("Welcome: " + loginwithanotherUsername);
-					GetandWriteFile.gettoWriteintoafile();
-					
+					System.out.println("Welcome: " + loginwithanotherUsername); // login with another user to update the record. 
+					GetandWriteFile sorttheFile = new GetandWriteFile();
+					sorttheFile.sortatextFile();
+					System.out.println("Back to main safely! ^_^");
 					break;
 				}
 			} else {
