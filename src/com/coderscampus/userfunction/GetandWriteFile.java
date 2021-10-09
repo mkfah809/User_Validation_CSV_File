@@ -59,27 +59,33 @@ public class GetandWriteFile {
 
 	public void sortatextFile() throws IOException {
 		System.out.println("sort a text from file");
-		User[] people = new User[21];
+		String[] userinfoArray =null;
+		Integer countLine = 0;
+		User[] people = new User[20];
+		String line = "";
 		GetandWriteFile writeintoFile = new GetandWriteFile();
 		User updatedUser = writeintoFile.gettoWriteintoafile();
-//		BufferedReader reader = new BufferedReader(new FileReader("UserData.txt"));
+		BufferedReader fileReader = new BufferedReader(new FileReader("UserData.txt"));
+		while ((line = fileReader.readLine()) != null) {
+			User user = new User();
+			userinfoArray = line.split(",");
+			user.setUsername(userinfoArray[0]);
+			user.setPassword(userinfoArray[1]);
+			user.setName(userinfoArray[2]);
+			user.setRole(userinfoArray[3]);
+			people[countLine] = user;
+			countLine++;
+			if (countLine == 20) {
+				break;
+			}
+		}
 		System.out.println(updatedUser);
-//		ArrayList<String> userList = new ArrayList<>();
-//		Collections.sort(userList);
-//		String line = "";
-//		while ((line = reader.readLine()) != null) {
-//			userList.add(line);
-//		}
-//		FileWriter writer = new FileWriter("UserData.txt");
-//		System.out.println("----------");
-//		for (String outputLine : userList) {
-//			System.out.println();
-//			writer.write("\n" + outputLine);
-//		}
-//		writer.close();
 		Arrays.sort(people, new UserRoleComparator());
 		for (User person : people) {
-			System.out.println(person.getName() + " is " + person.getName() + " inches tall. ");
+			System.out.println(person.getUsername() + ","
+							+  person.getPassword() + ","
+							+  person.getName()     + ","
+							+  person.getRole());
 		}
 	}
 }
