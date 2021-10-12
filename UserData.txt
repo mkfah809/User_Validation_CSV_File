@@ -18,9 +18,3 @@ fallorn@icloud.com,WdPT2xb5,Beulah Lopez,normal_user
 geeber@yahoo.com,k8x6V7bw,Willard Phillips,normal_user
 haddawy@comcast.net,A6XErUme,Vera Hammond,normal_user
 harryh@yahoo.com,5nUy9Zap,Rosa Pearson,normal_user
-bsikdar@sbcglobal.netttt,mVtSTP7A,Meyer Mina,normal_user
-minakaramm1@gmail.com,Strong_Password1234,Mina Karam,normal_user
-newUsername,newPassword,newName,normal_user
-newUsername,newPass,NewName,normal_user
-dialmanworld@gmail.com,dialmanworld@cloud.IT,Qu9^2P,normal_user
-biglou@live.com,8Cn7KY2S,Shirley Salazarrrr,normal_user

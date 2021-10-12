@@ -70,7 +70,7 @@ public class User implements Comparable<User>, Serializable {
 	@Override
 	public int compareTo(User that) {
 		if(this.role.compareTo(that.role) == 0) {
-			return this.name.compareTo(that.name);
+			return that.name.compareTo(this.name);
 		} else {
 			return that.role.compareTo(this.role);
 		}

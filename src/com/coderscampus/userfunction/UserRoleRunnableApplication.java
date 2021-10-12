@@ -29,7 +29,9 @@ public class UserRoleRunnableApplication {
 					getuserprivilege();
 					String loginwithanotherUsername = UserLogin.getloginasanyUser(0); // holds another account
 					System.out.println("Succesfully logged in as another user!");
-					System.out.println("Welcome: " + loginwithanotherUsername); // login with another user to update the record. 
+					System.out.println("Welcome: " + loginwithanotherUsername); // login with another user to update the record.
+					@SuppressWarnings("unused")
+					GetandWriteFile writeintoFile = new GetandWriteFile();
 					GetandWriteFile sorttheFile = new GetandWriteFile();
 					sorttheFile.sortatextFile();
 					System.out.println("Back to main safely! ^_^");
