@@ -8,7 +8,6 @@ import com.coderscampus.user.UserMessageOutput;
 
 public class UserLogin {
 	static Scanner login = new Scanner(System.in);
-	static String welcomeUser = null;
 
 	public static String getpromptUser(String promptMsg) {
 		System.out.println(promptMsg);
@@ -20,10 +19,11 @@ public class UserLogin {
 		UserLogin.getpromptUser("Enter your password: ");
 	}
 
-	public static String getloginasanyUser(int userOption) throws IOException {
-		// everytime reads welcomeUser with Null
+	public static User getloginasanyUser() throws IOException {
+		int userOption;
 		userOption = login.nextInt();
 		String anotheruserUsername = null;
+		String welcomeUser = null;
 		if (userOption == 0) {
 			User[] users = new User[20];
 			users = GetandWriteFile.getuserfromFile();
@@ -33,25 +33,12 @@ public class UserLogin {
 				if (anotheruserUsername.equals(user.getUsername())) {
 					welcomeUser = user.getName();
 					UserMessageOutput.validloginMessage(1, welcomeUser);
-					System.out.println("--------------------------------------\n\r");
+					System.out.println("Succesfully logged in as another user!\n--------");
+					return user;
 				}
 			}
-			return anotheruserUsername;
-		} else if (userOption == 1) {
-			String updatedUsername = UpdateUserInformation.getupdateUsername();
-			System.out.println("Username succesfully updated!");
-			return updatedUsername;
-		} else if (userOption == 2) {
-			String updatedPassword = UpdateUserInformation.getupdatePassword();
-			System.out.println("Password succesfully updated!");
-			return updatedPassword;
-		} else if (userOption == 3) {
-			String updatedName = UpdateUserInformation.getupdateName();
-			System.out.println("Name succesfully updated!");
-			return updatedName;
-		} else {
-			System.exit(0);
-		} return "Invalid Entry, Please try again!";
-			 
+		}
+		return null;
+
 	}
 }

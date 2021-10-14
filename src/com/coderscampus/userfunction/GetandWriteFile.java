@@ -10,7 +10,6 @@ import com.coderscampus.user.User;
 
 public class GetandWriteFile {
 
-	@SuppressWarnings("null")
 	public static User[] getuserfromFile() throws IOException {
 		User[] users = new User[20];
 		String[] userinfoArray;
@@ -40,50 +39,15 @@ public class GetandWriteFile {
 	}
 
 	public void sortatextFile() throws IOException {
-		User updatedUser = new User();
-		UpdateUserInformation updateUserInformation = new UpdateUserInformation();
-		updatedUser = (User) updateUserInformation.getupdateduserRecord();
+		UpdateUserInformation updateUser = new UpdateUserInformation();
+		User updatedUser = updateUser.getupdateUser();
 		FileWriter fileWriter = new FileWriter("UserData.txt", true);
-		String[] userinfoArray = null;
-		Integer countLine = 0;
-		User[] people = new User[20];
-		String line = "";
-		BufferedReader fileReader = new BufferedReader(new FileReader("UserData.txt"));
-		try {
-			while ((line = fileReader.readLine()) != null) {
-				User user = new User();
-				userinfoArray = line.split(",");
-				user.setUsername(userinfoArray[0]);
-				user.setPassword(userinfoArray[1]);
-				user.setName(userinfoArray[2]);
-				user.setRole(userinfoArray[3]);
-				people[countLine] = user;
-				countLine++;
-				if (countLine == 20) {
-					break;
-				}
-			}
-		} finally {
-			if(fileReader != null)
-				fileReader.close();
-		}
-		//User[] user = getuserfromFile();
-		fileWriter.write("\n" + updatedUser.getUsername() + "," + updatedUser.getPassword() + ","
-				+ updatedUser.getName() + "," + updatedUser.getRole());
+		User[] people = getuserfromFile();
 		for (User person : people) {
-			PrintWriter makethefileEmpty= new PrintWriter("UserData.txt");
-			makethefileEmpty.print("");
-			fileWriter.write("\n" + person.getName()+","+person.getRole());
-			System.out.println("----------------------------------------------");
-			System.out.println(person.getName() + " - " + person.getRole());
+			
 		}
-		try {
-			Arrays.sort(people);
-			fileReader.readLine();
-		} catch (Exception e) {
-			System.err.println("Error while writing to file: " + e.getMessage());
-		} finally {
-			fileWriter.close();
-		}
+		System.out.println("Out of loop");
+
 	}
+
 }
