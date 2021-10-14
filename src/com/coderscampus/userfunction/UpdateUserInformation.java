@@ -7,29 +7,6 @@ import com.coderscampus.user.User;
 
 public class UpdateUserInformation {
 
-//	static User getupdateUsername() throws IOException {
-//		User updatedUsername = UpdateUserInformation.getupdateUsername();
-//		System.out.println("Please enter a new username");
-//		updatedUsername.setUsername(UserLogin.login.nextLine());
-//		System.out.println("updatedUsername is " + updatedUsername.getUsername());
-//		return updatedUsername;
-//	}
-//
-//	static User getupdatePassword() throws IOException {
-//		System.out.println("Please enter a new password");
-//		UserLogin getloginasanyuserList = new UserLogin();
-//		User updatedPassword = getloginasanyuserList.getloginasanyUser();
-//		System.out.println("updatedPassword is " + updatedPassword);
-//		return updatedPassword;
-//	}
-//
-//	static User getupdateName() throws IOException {
-//		UserLogin getloginasanyuserList = new UserLogin();
-//		User updatedName = getloginasanyuserList.getloginasanyUser();
-//		System.out.println("updatedName is " + updatedName);
-//		return updatedName;
-//	}
-
 	User getupdateUser() throws IOException {
 		getuserprivilege();
 		User user = UserLogin.getloginasanyUser();
@@ -42,23 +19,20 @@ public class UpdateUserInformation {
 			User updatedUsername = user;
 			System.out.println("Please enter a new username");
 			user.setUsername(UserLogin.login.nextLine());
-			System.out.println("Your new username is" + updatedUsername.getUsername());
 			return updatedUsername;
 
 		} else if (userOption == 2) {
 			User updatedPassword = user;
 			System.out.println("Please enter a new password");
-			user.setUsername(UserLogin.login.nextLine());
-			System.out.println("Your new password is " + updatedPassword.getPassword());
+			user.setPassword(UserLogin.login.nextLine());
 			return updatedPassword;
-			
+
 		} else if (userOption == 3) {
 			User updatedName = user;
 			System.out.println("Please enter a new name");
-			user.setUsername(UserLogin.login.nextLine());
-			System.out.println("Your new name is " + updatedName.getName());
+			user.setName(UserLogin.login.nextLine());
 			return updatedName;
-			
+
 		} else if (userOption == 4) {
 			System.exit(0);
 		}

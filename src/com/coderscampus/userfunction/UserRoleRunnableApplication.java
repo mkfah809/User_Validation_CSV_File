@@ -13,7 +13,6 @@ public class UserRoleRunnableApplication {
 		String userRole = "";
 		String welcomeUser = "";
 		User[] users = new User[20];
-
 		users = GetandWriteFile.getuserfromFile();
 		userUsername = UserLogin.getpromptUser("Enter your username: ");
 		userPassword = UserLogin.getpromptUser("Enter your password: ");
