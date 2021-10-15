@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class User implements Comparable<User>, Serializable {
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", password=" + password + ", name=" + name + ", role=" + role + "]";
+		return  username + "," + password + "," + name + "," + role + "\n";
 	}
 
 	public String username;
@@ -83,9 +83,9 @@ public class User implements Comparable<User>, Serializable {
 	@Override
 	public int compareTo(User that) {
 		if(this.role.compareTo(that.role) == 0) {
-			return that.name.compareTo(this.name);
+			return this.name.compareTo(that.name);
 		} else {
-			return this.role.compareTo(that.role);
+			return that.role.compareTo(this.role);
 		}
 	}
 
