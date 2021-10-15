@@ -3,12 +3,25 @@ package com.coderscampus.user;
 import java.io.Serializable;
 
 public class User implements Comparable<User>, Serializable {
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", password=" + password + ", name=" + name + ", role=" + role + "]";
+	}
+
 	public String username;
 	public String password;
 	public String name;
 	public String role;
 	private static final long serialVersionUID = 1L;
 
+	
+	public User(String username, String password, String name, String role) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.role = role;
+	}
 
 	/**
 	 * @return the username
@@ -72,7 +85,7 @@ public class User implements Comparable<User>, Serializable {
 		if(this.role.compareTo(that.role) == 0) {
 			return that.name.compareTo(this.name);
 		} else {
-			return that.role.compareTo(this.role);
+			return this.role.compareTo(that.role);
 		}
 	}
 

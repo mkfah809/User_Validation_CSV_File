@@ -1,6 +1,7 @@
 package com.coderscampus.userfunction;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import com.coderscampus.user.User;
 import com.coderscampus.user.UserMessageOutput;
@@ -21,12 +22,15 @@ public class UserRoleRunnableApplication {
 				userRole = user.getRole();
 				welcomeUser = user.getName();
 				UserMessageOutput.validloginMessage(1, welcomeUser);
-
-				if  (userRole.equals(user.getRole())) {
+				if (userRole.equals(user.getRole())) {
 					System.out.println("------------------------");
-					System.out.println("\nPlease choose from the following options: ");
-					GetandWriteFile sorttheFile = new GetandWriteFile();
-					sorttheFile.sortatextFile();
+					UpdateUserInformation updateUser = new UpdateUserInformation();
+					updateUser.getupdateUser(users);
+					Arrays.sort(users);
+					printUser(users);
+					// test users to see if changes are there.
+//					GetandWriteFile sorttheFile = new GetandWriteFile();
+//					sorttheFile.sortatextFile();
 					System.out.println("Back to main safely! ^_^");
 					break;
 				} else {
@@ -36,4 +40,10 @@ public class UserRoleRunnableApplication {
 			}
 		}
 	}
+	 static void printUser(User[] users) {
+		for(User user : users) {
+			System.out.println(user);
+		}
+	}
+
 }
