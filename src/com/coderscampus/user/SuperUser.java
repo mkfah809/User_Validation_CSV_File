@@ -1,9 +1,5 @@
 package com.coderscampus.user;
 
-import java.io.IOException;
-
-import com.coderscampus.userfunction.UpdateUserInformation;
-
 public class SuperUser extends User {
 
 	private static final long serialVersionUID = 1L;
@@ -13,14 +9,6 @@ public class SuperUser extends User {
 		// JavaRule -> super keyword use first in the constructor.
 		super(username, password, name, "super_user");
 		this.username = "true";
-	}
-
-	public void userisSuperUser(User[] users) throws IOException {
-		System.out.println("");
-		UpdateUserInformation.getuserprivilege();
-		UpdateUserInformation updateUser = new UpdateUserInformation();
-		updateUser.getupdateUser(users);
-		
 	}
 
 }

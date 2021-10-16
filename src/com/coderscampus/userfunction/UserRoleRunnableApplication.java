@@ -3,7 +3,6 @@ package com.coderscampus.userfunction;
 import java.io.IOException;
 import java.util.Arrays;
 
-import com.coderscampus.user.SuperUser;
 import com.coderscampus.user.User;
 import com.coderscampus.user.UserMessageOutput;
 
@@ -14,38 +13,41 @@ public class UserRoleRunnableApplication {
 	public static void main(String[] args) throws IOException {
 		String userUsername = "";
 		String userPassword = "";
-		String userName = "";
 		String userRole = "";
 		User[] users = new User[20];
 		users = GetandWriteFile.getuserfromFile();
 		userUsername = UserLogin.getpromptUser("Enter your username: ");
 		userPassword = UserLogin.getpromptUser("Enter your password: ");
-		userRole = getuserRole(userUsername, userPassword, userRole, users);
+		User oldUser = getoldUser(userUsername, userPassword, userRole, users);
 
-		if (userRole.equals(SUPER_USER)) {
-			SuperUser superUser = new SuperUser(userUsername, userPassword, userName, userRole);
-			superUser.userisSuperUser(users);
+		if (oldUser.getRole().equals(SUPER_USER)) {
 
-		} else if (userRole.equals(NORMAL_USER)) {
-			System.out.println("I am not super-user");
 			UpdateUserInformation UUI = new UpdateUserInformation();
-			UUI.getupdateUser(users);
+			UserPrivileges.getsuperuserPrivilege();
+			UUI.getusertoUpdate(users, oldUser);
+
+		} else if (oldUser.getRole().equals(NORMAL_USER)) {
+			UpdateUserInformation UUI = new UpdateUserInformation();
+			UserPrivileges.getnormaluserPrivilege();
+			UUI.getusertoUpdate(users, oldUser);
 		}
+		System.out.println("Updated Successfuly");
 		Arrays.sort(users);
 		GetandWriteFile extracted = new GetandWriteFile();
 		extracted.getwriteintoFile(users);
 	}
 
-	private static String getuserRole(String userUsername, String userPassword, String userRole, User[] users) {
+
+	private static User getoldUser(String userUsername, String userPassword, String userRole, User[] users) {
 		String welcomeUser = "";
 		for (User user : users) {
 			if (userUsername.equals(user.getUsername()) && userPassword.equals(user.getPassword())) {
-				userRole = user.getRole();
 				welcomeUser = user.getName();
 				UserMessageOutput.validloginMessage(1, welcomeUser);
+				return user;
 			}
 		}
-		return userRole;
+		return null;
 	}
 
 }

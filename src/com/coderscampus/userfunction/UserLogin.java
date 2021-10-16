@@ -7,8 +7,7 @@ import com.coderscampus.user.User;
 import com.coderscampus.user.UserMessageOutput;
 
 public class UserLogin {
-	static Scanner login = new Scanner(System.in);
-
+	public static Scanner login = new Scanner(System.in);
 	public static String getpromptUser(String promptMsg) {
 		System.out.println(promptMsg);
 		return login.nextLine();
@@ -20,24 +19,21 @@ public class UserLogin {
 	}
 
 	public static User getloginasanyUser() throws IOException {
-		int userOption;
-		userOption = login.nextInt();
 		String anotheruserUsername = null;
 		String welcomeUser = null;
-		if (userOption == 0) {
-			User[] users = new User[20];
-			users = GetandWriteFile.getuserfromFile();
-			anotheruserUsername = getpromptUser("Enter a username you want to login with: ");
-			anotheruserUsername = login.nextLine();
-			for (User user : users) {
-				if (anotheruserUsername.equals(user.getUsername())) {
-					welcomeUser = user.getName();
-					UserMessageOutput.validloginMessage(1, welcomeUser);
-					System.out.println("Succesfully logged in as another user!\n--------");
-					return user;
-				}
+		User[] users = new User[20];
+		users = GetandWriteFile.getuserfromFile();
+		anotheruserUsername = getpromptUser("Enter a username you want to login with: ");
+		anotheruserUsername = login.nextLine();
+		for (User user : users) {
+			if (anotheruserUsername.equals(user.getUsername())) {
+				welcomeUser = user.getName();
+				UserMessageOutput.validloginMessage(1, welcomeUser);
+				System.out.println("Succesfully logged in as another user!\n--------");
+				return user;
 			}
 		}
+
 		return null;
 
 	}
