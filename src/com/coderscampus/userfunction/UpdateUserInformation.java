@@ -7,10 +7,10 @@ import com.coderscampus.user.User;
 import com.coderscampus.user.UserRecordUpdate;
 
 public class UpdateUserInformation {
-	static Scanner useroptionList = new Scanner(System.in);
-	UserRecordUpdate updateRecord = new UserRecordUpdate();
 
 	void getusertoUpdate(User[] users, User oldUser) throws IOException {
+		Scanner useroptionList = new Scanner(System.in);
+		UserRecordUpdate updateRecord = new UserRecordUpdate();
 		Integer userOption = useroptionList.nextInt();
 		if (userOption == 0) {
 			oldUser = UserLogin.getloginasanyUser();
@@ -25,7 +25,7 @@ public class UpdateUserInformation {
 			System.exit(0);
 		} else {
 			System.out.println("Invalid Entry!");
-		}
+			useroptionList.close();		}
 	}
 
 
