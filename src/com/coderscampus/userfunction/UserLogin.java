@@ -24,7 +24,6 @@ public class UserLogin {
 		User[] users = new User[20];
 		users = GetandWriteFile.getuserfromFile();
 		anotheruserUsername = getpromptUser("Enter a username you want to login with: ");
-		anotheruserUsername = login.nextLine();
 		for (User user : users) {
 			if (anotheruserUsername.equals(user.getUsername())) {
 				welcomeUser = user.getName();

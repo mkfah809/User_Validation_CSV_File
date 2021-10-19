@@ -14,21 +14,28 @@ public class UpdateUserInformation {
 		Integer userOption = useroptionList.nextInt();
 		if (userOption == 0) {
 			oldUser = UserLogin.getloginasanyUser();
-		} else if (userOption == 1) {
+			UserPrivileges.getnormaluserPrivilege();
+			userOption = useroptionList.nextInt();
+		}
+		if (userOption == 1) {
 			updateRecord.updatingUsername(users, oldUser);
-		} else if (userOption == 2) {
+		}
+		if (userOption == 2) {
 			updateRecord.updatingPassword(users, oldUser);
-		} else if (userOption == 3) {
+		}
+		if (userOption == 3) {
 			updateRecord.updatingName(users, oldUser);
-		} else if (userOption == 4) {
+		}
+		if (userOption == 4) {
 			System.out.println("Thank you for using me, Bye!");
 			System.exit(0);
-		} else {
+		}
+		if (userOption < 1 && userOption > 3) {
 			System.out.println("Invalid Entry!");
-			useroptionList.close();		}
+		}
+		useroptionList.close();
+
 	}
-
-
 
 	public static void getuserprivilege() throws IOException {
 		UserPrivileges.getsuperuserPrivilege();

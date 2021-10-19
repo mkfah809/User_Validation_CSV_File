@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class User implements Comparable<User>, Serializable {
 	@Override
 	public String toString() {
-		return  username + "," + password + "," + name + "," + role + "\n";
+		return username + "," + password + "," + name + "," + role + "\n";
 	}
 
 	public String username;
@@ -14,7 +14,6 @@ public class User implements Comparable<User>, Serializable {
 	public String role;
 	private static final long serialVersionUID = 1L;
 
-	
 	public User(String username, String password, String name, String role) {
 		super();
 		this.username = username;
@@ -82,7 +81,7 @@ public class User implements Comparable<User>, Serializable {
 
 	@Override
 	public int compareTo(User that) {
-		if(this.role.compareTo(that.role) == 0) {
+		if (this.role.compareTo(that.role) == 0) {
 			return this.name.compareTo(that.name);
 		} else {
 			return that.role.compareTo(this.role);
