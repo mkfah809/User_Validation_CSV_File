@@ -12,29 +12,30 @@ public class UpdateUserInformation {
 		Scanner useroptionList = new Scanner(System.in);
 		UserRecordUpdate updateRecord = new UserRecordUpdate();
 		Integer userOption = useroptionList.nextInt();
-		if (userOption == 0) {
-			oldUser = UserLogin.getloginasanyUser();
+		do {
+			if (userOption == 0) {
+				oldUser = UserLogin.getloginasanyUser();
+			}
+			if (userOption == 1) {
+				updateRecord.updatingUsername(users, oldUser);
+			}
+			if (userOption == 2) {
+				updateRecord.updatingPassword(users, oldUser);
+			}
+			if (userOption == 3) {
+				updateRecord.updatingName(users, oldUser);
+			}
+			if (userOption == 4) {
+				System.out.println("Thank you for using me, Bye!");
+				System.exit(0);
+			}
+//			if (userOption < 1 && userOption > 3) {
+//				System.out.println("Invalid Entry!");
+			System.out.println();
 			UserPrivileges.getnormaluserPrivilege();
 			userOption = useroptionList.nextInt();
-		}
-		if (userOption == 1) {
-			updateRecord.updatingUsername(users, oldUser);
-		}
-		if (userOption == 2) {
-			updateRecord.updatingPassword(users, oldUser);
-		}
-		if (userOption == 3) {
-			updateRecord.updatingName(users, oldUser);
-		}
-		if (userOption == 4) {
-			System.out.println("Thank you for using me, Bye!");
-			System.exit(0);
-		}
-		if (userOption < 1 && userOption > 3) {
-			System.out.println("Invalid Entry!");
-		}
-		useroptionList.close();
-
+			}while(userOption != 4);
+				useroptionList.close();
 	}
 
 	public static void getuserprivilege() throws IOException {

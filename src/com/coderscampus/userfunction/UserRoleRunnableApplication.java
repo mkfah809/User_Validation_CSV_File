@@ -31,7 +31,6 @@ public class UserRoleRunnableApplication {
 			UserPrivileges.getnormaluserPrivilege();
 			UUI.getusertoUpdate(users, oldUser);
 		}
-		System.out.println("Updated Successfuly");
 		Arrays.sort(users);
 		GetandWriteFile extracted = new GetandWriteFile();
 		extracted.getwriteintoFile(users);

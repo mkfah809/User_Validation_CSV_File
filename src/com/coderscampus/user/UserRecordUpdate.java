@@ -10,6 +10,7 @@ public class UserRecordUpdate {
 		System.out.println("Please enter a new Name");
 		newUser.setName(UserLogin.login.nextLine());
 		UUI.updateUser(oldUser, newUser, users);
+		System.out.println("Updated Successfuly");
 		return oldUser;
 	}
 
@@ -18,6 +19,7 @@ public class UserRecordUpdate {
 		System.out.println("Please enter a new Password");
 		newUser.setPassword(UserLogin.login.nextLine());
 		UUI.updateUser(oldUser, newUser, users);
+		System.out.println("Updated Successfuly");
 		return oldUser;
 	}
 
@@ -26,7 +28,7 @@ public class UserRecordUpdate {
 		System.out.println("Please enter a new username");
 		newUser.setUsername(UserLogin.login.nextLine());
 		UUI.updateUser(oldUser, newUser, users);
+		System.out.println("Updated Successfuly");
 		return oldUser;
 	}
-
 }
