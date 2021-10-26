@@ -5,8 +5,10 @@ import com.coderscampus.userfunction.UserLogin;
 
 public class UserRecordUpdate {
 	UpdateUserInformation UUI = new UpdateUserInformation();
+
 	public User updatingName(User[] users, User oldUser) {
-		User newUser = new User(oldUser.getUsername(), oldUser.getPassword(), oldUser.getName(), oldUser.getRole());
+		User newUser = null;
+		newUser = new User(oldUser.getUsername(), oldUser.getPassword(), oldUser.getName(), oldUser.getRole());
 		System.out.println("Please enter a new Name");
 		newUser.setName(UserLogin.login.nextLine());
 		UUI.updateUser(oldUser, newUser, users);

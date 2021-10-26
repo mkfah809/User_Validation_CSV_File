@@ -19,13 +19,13 @@ public class UserRoleRunnableApplication {
 		userUsername = UserLogin.getpromptUser("Enter your username: ");
 		userPassword = UserLogin.getpromptUser("Enter your password: ");
 		User oldUser = getoldUser(userUsername, userPassword, userRole, users);
-
+		User newUser = null;
 		if (oldUser.getRole().equals(SUPER_USER)) {
 
 			UpdateUserInformation UUI = new UpdateUserInformation();
 			UserPrivileges.getsuperuserPrivilege();
 			UUI.getusertoUpdate(users, oldUser);
-
+			
 		} else if (oldUser.getRole().equals(NORMAL_USER)) {
 			UpdateUserInformation UUI = new UpdateUserInformation();
 			UserPrivileges.getnormaluserPrivilege();
