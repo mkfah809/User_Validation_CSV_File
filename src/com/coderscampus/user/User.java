@@ -81,10 +81,10 @@ public class User implements Comparable<User>, Serializable {
 
 	@Override
 	public int compareTo(User that) {
-		if (this.role.compareTo(that.role) == 0) {
-			return this.username.compareTo(that.username);
+		if (this.role.compareToIgnoreCase(that.role) == 0) {
+			return this.username.compareToIgnoreCase(that.username); // This -> That (Ascending) ** That -> This (Descending)
 		} else {
-			return that.role.compareTo(this.role);
+			return that.role.compareToIgnoreCase(this.role);
 		}
 	}
 
