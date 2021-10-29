@@ -12,26 +12,33 @@ public class UpdateUserInformation {
 		Scanner useroptionList = new Scanner(System.in);
 		UserRecordUpdate updateRecord = new UserRecordUpdate();
 		Integer userOption = useroptionList.nextInt();
-		while (userOption != 4) {
-			if (userOption == 0) {
-				oldUser = UserLogin.getloginasanyUser();
-			} else if (userOption == 1) {
-				updateRecord.updatingUsername(users, oldUser);
-			} else if (userOption == 2) {
-				updateRecord.updatingPassword(users, oldUser);
-			} else if (userOption == 3) {
-				updateRecord.updatingName(users, oldUser);
-			} else if (userOption == 4) {
-				System.out.println("Thank you for using me, Bye!");
-				System.exit(0);
-			} else if (userOption > 4) {
-				System.out.println("Invalid Entry!, try again");
-			}
+		while (userOption <= 4) {
+			oldUser = userOptions(users, oldUser, updateRecord, userOption);
 			System.out.println();
 			UserPrivileges.getnormaluserPrivilege();
 			userOption = useroptionList.nextInt();
 		}
+
 		useroptionList.close();
+		return oldUser;
+	}
+
+	private User userOptions(User[] users, User oldUser, UserRecordUpdate updateRecord, Integer userOption)
+			throws IOException {
+		if (userOption == 0) {
+			oldUser = UserLogin.getloginasanyUser();
+		} else if (userOption == 1) {
+			updateRecord.updatingUsername(users, oldUser);
+		} else if (userOption == 2) {
+			updateRecord.updatingPassword(users, oldUser);
+		} else if (userOption == 3) {
+			updateRecord.updatingName(users, oldUser);
+		} else if (userOption == 4) {
+			System.out.println("Thank you for using me, Bye!");
+			System.exit(0);
+		} else  {
+			System.out.println("Invalid Entry!, try again");
+		}
 		return oldUser;
 	}
 
@@ -41,21 +48,25 @@ public class UpdateUserInformation {
 	}
 
 	public void updateUser(User oldUser, User newUser, User[] users) {
-		//updating the user & the userArray
+		// updating the user & the userArray
 		for (int i = 0; i < users.length; i++) {
 			User user = users[i];
-			if (oldUser.getUsername().equals(user.getUsername()) || oldUser.getPassword().equals(user.getPassword())
-					|| oldUser.getName().equals(user.getName())) {
-				oldUser.setUsername(newUser.getUsername());
-				oldUser.setPassword(newUser.getPassword());
-				oldUser.setName(newUser.getName());
-				oldUser.setRole(newUser.getRole());
-				user.setUsername(newUser.getUsername());
-				user.setPassword(newUser.getPassword());
-				user.setName(newUser.getName());
-				user.setRole(newUser.getRole());
-			}
+			saveUserToList(oldUser, newUser, user);
 
+		}
+	}
+
+	private void saveUserToList(User oldUser, User newUser, User user) {
+		if (oldUser.getUsername().equals(user.getUsername()) || oldUser.getPassword().equals(user.getPassword())
+				|| oldUser.getName().equals(user.getName())) {
+			oldUser.setUsername(newUser.getUsername());
+			oldUser.setPassword(newUser.getPassword());
+			oldUser.setName(newUser.getName());
+			oldUser.setRole(newUser.getRole());
+			user.setUsername(newUser.getUsername());
+			user.setPassword(newUser.getPassword());
+			user.setName(newUser.getName());
+			user.setRole(newUser.getRole());
 		}
 	}
 }

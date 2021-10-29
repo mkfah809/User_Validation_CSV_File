@@ -1,5 +1,7 @@
 package com.coderscampus.user;
 
+
+
 public class UserMessageOutput {
 	private static String[] OutputMessage = new String[30];
 
@@ -39,5 +41,20 @@ public class UserMessageOutput {
 			System.out.println(OutputMessage[6]);
 		}
 	}
+	
+	public static void lockOutMessage(int lockoutloginmesssageid) {
+		OutputMessage[2] = "Too many failed login attempts, you are now locked out";
+		if (lockoutloginmesssageid == 2) {
+			System.out.println(OutputMessage[2]);
+		}
+	}
+	
+	public static void invalidLoginMessage(int invalidLoginMessage) {
+		OutputMessage[7] = "Invalid Entry, Please try again.";
+		if (invalidLoginMessage == 7) {
+			System.out.println(OutputMessage[7]);
+		}
+	}
+
 
 }
