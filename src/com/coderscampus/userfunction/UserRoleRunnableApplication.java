@@ -7,8 +7,7 @@ import com.coderscampus.user.User;
 import com.coderscampus.user.UserMessageOutput;
 
 public class UserRoleRunnableApplication {
-	private static final String NORMAL_USER = "normal_user";
-	private static final String SUPER_USER = "super_user";
+	
 	static Boolean userFound = false;
 	static Integer invalidLogin = 0;
 
@@ -19,8 +18,18 @@ public class UserRoleRunnableApplication {
 		User[] users = new User[20];
 		users = GetandWriteFile.getuserfromFile();
 		UserRoleRunnableApplication getUserCredential = new UserRoleRunnableApplication();
-
 		User oldUser = getUserCredential.getUserCredential(userUsername, userPassword, userRole, users);
+		
+		getUserRole(users, oldUser);
+
+		Arrays.sort(users);
+		GetandWriteFile extracted = new GetandWriteFile();
+		extracted.getwriteintoFile(users);
+	}
+
+	private static void getUserRole(User[] users, User oldUser) throws IOException {
+		final String NORMAL_USER = "normal_user";
+		final String SUPER_USER = "super_user";
 		if (oldUser.getRole().equals(SUPER_USER)) {
 			UpdateUserInformation UUI = new UpdateUserInformation();
 			UserPrivileges.getsuperuserPrivilege();
@@ -31,10 +40,6 @@ public class UserRoleRunnableApplication {
 			UserPrivileges.getnormaluserPrivilege();
 			UUI.getusertoUpdate(users, oldUser);
 		}
-
-		Arrays.sort(users);
-		GetandWriteFile extracted = new GetandWriteFile();
-		extracted.getwriteintoFile(users);
 	}
 
 	private User getUserCredential(String userUsername, String userPassword, String userRole, User[] users) {
@@ -46,7 +51,7 @@ public class UserRoleRunnableApplication {
 
 	private User getoldUser(String userUsername, String userPassword, String userRole, User[] users) {
 		String welcomeUser = "";
-		do {
+	
 			for (User user : users) {
 				if (userUsername.equalsIgnoreCase(user.getUsername()) && userPassword.equals(user.getPassword())) {
 					welcomeUser = user.getName();
@@ -55,9 +60,7 @@ public class UserRoleRunnableApplication {
 					return user;
 				}
 			}
-			userValidation(userUsername, userPassword, userRole, users);
 
-		} while (invalidLogin != 4);
 
 		return null;
 	}

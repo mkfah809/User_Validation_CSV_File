@@ -8,17 +8,17 @@ import com.coderscampus.user.UserRecordUpdate;
 
 public class UpdateUserInformation {
 
+	Scanner useroptionList = new Scanner(System.in);
+	UserRecordUpdate updateRecord = new UserRecordUpdate();
+	Integer userOption = useroptionList.nextInt();	
+	
 	User getusertoUpdate(User[] users, User oldUser) throws IOException {
-		Scanner useroptionList = new Scanner(System.in);
-		UserRecordUpdate updateRecord = new UserRecordUpdate();
-		Integer userOption = useroptionList.nextInt();
-		while (userOption <= 4) {
+		while(userOption != 4) {
 			oldUser = userOptions(users, oldUser, updateRecord, userOption);
 			System.out.println();
 			UserPrivileges.getnormaluserPrivilege();
 			userOption = useroptionList.nextInt();
 		}
-
 		useroptionList.close();
 		return oldUser;
 	}
@@ -29,14 +29,17 @@ public class UpdateUserInformation {
 			oldUser = UserLogin.getloginasanyUser();
 		} else if (userOption == 1) {
 			updateRecord.updatingUsername(users, oldUser);
+
 		} else if (userOption == 2) {
 			updateRecord.updatingPassword(users, oldUser);
+
 		} else if (userOption == 3) {
 			updateRecord.updatingName(users, oldUser);
-		} else if (userOption == 4) {
+			UserPrivileges.getnormaluserPrivilege();
+		}  if (userOption == 4) {
 			System.out.println("Thank you for using me, Bye!");
 			System.exit(0);
-		} else  {
+		} else {
 			System.out.println("Invalid Entry!, try again");
 		}
 		return oldUser;
@@ -59,14 +62,15 @@ public class UpdateUserInformation {
 	private void saveUserToList(User oldUser, User newUser, User user) {
 		if (oldUser.getUsername().equals(user.getUsername()) || oldUser.getPassword().equals(user.getPassword())
 				|| oldUser.getName().equals(user.getName())) {
-			oldUser.setUsername(newUser.getUsername());
-			oldUser.setPassword(newUser.getPassword());
-			oldUser.setName(newUser.getName());
-			oldUser.setRole(newUser.getRole());
-			user.setUsername(newUser.getUsername());
-			user.setPassword(newUser.getPassword());
-			user.setName(newUser.getName());
-			user.setRole(newUser.getRole());
+			updateUserToInsertIntoFile(oldUser, newUser);
+			updateUserToInsertIntoFile(user, newUser);
 		}
+	}
+
+	private void updateUserToInsertIntoFile(User oldUser, User newUser) {
+		oldUser.setUsername(newUser.getUsername());
+		oldUser.setPassword(newUser.getPassword());
+		oldUser.setName(newUser.getName());
+		oldUser.setRole(newUser.getRole());
 	}
 }
