@@ -1,5 +1,6 @@
 package com.coderscampus.userfunction;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -7,73 +8,87 @@ import com.coderscampus.user.User;
 import com.coderscampus.user.UserMessageOutput;
 
 public class UserRoleRunnableApplication {
-	
+
 	static Boolean userFound = false;
 	static Integer invalidLogin = 0;
 
 	public static void main(String[] args) throws IOException {
+		applicationLaunch();
+	}
+
+	private static void applicationLaunch() throws IOException, FileNotFoundException {
 		String userRole = "";
 		String userUsername = "";
 		String userPassword = "";
 		User[] users = new User[20];
 		users = GetandWriteFile.getuserfromFile();
 		UserRoleRunnableApplication getUserCredential = new UserRoleRunnableApplication();
-		User oldUser = getUserCredential.getUserCredential(userUsername, userPassword, userRole, users);
-		
-		getUserRole(users, oldUser);
-
+		User currentUser = null;
+		currentUser = isUserValid(userRole, userUsername, userPassword, users, getUserCredential);
+		getUserRole(users, currentUser);
 		Arrays.sort(users);
 		GetandWriteFile extracted = new GetandWriteFile();
 		extracted.getwriteintoFile(users);
 	}
 
-	private static void getUserRole(User[] users, User oldUser) throws IOException {
+	private static User isUserValid(String userRole, String userUsername, String userPassword, User[] users,
+			UserRoleRunnableApplication getUserCredential) {
+		User currentUser;
+		do {
+			currentUser = getUserCredential.getUserCredential(userUsername, userPassword, userRole, users);
+			getUserCredential.userAttemptController(userPassword, userPassword, userPassword, users, currentUser);
+			if (userFound == true) {
+				break;
+			}
+		} while (invalidLogin <= 4);
+		return currentUser;
+	}
+
+	private static void getUserRole(User[] users, User currentUser) throws IOException {
 		final String NORMAL_USER = "normal_user";
 		final String SUPER_USER = "super_user";
-		if (oldUser.getRole().equals(SUPER_USER)) {
+		if (currentUser.getRole().equals(SUPER_USER)) {
 			UpdateUserInformation UUI = new UpdateUserInformation();
 			UserPrivileges.getsuperuserPrivilege();
-			UUI.getusertoUpdate(users, oldUser);
+			UUI.getusertoUpdate(users, currentUser);
 
-		} else if (oldUser.getRole().equals(NORMAL_USER)) {
+		} else if (currentUser.getRole().equals(NORMAL_USER)) {
 			UpdateUserInformation UUI = new UpdateUserInformation();
 			UserPrivileges.getnormaluserPrivilege();
-			UUI.getusertoUpdate(users, oldUser);
+			UUI.getusertoUpdate(users, currentUser);
 		}
 	}
 
 	private User getUserCredential(String userUsername, String userPassword, String userRole, User[] users) {
 		userUsername = UserLogin.getpromptUser("Enter your username: ");
 		userPassword = UserLogin.getpromptUser("Enter your password: ");
-		User oldUser = getoldUser(userUsername, userPassword, userRole, users);
-		return oldUser;
+		User currentUser = getoldUser(userUsername, userPassword, userRole, users);
+		return currentUser;
 	}
 
 	private User getoldUser(String userUsername, String userPassword, String userRole, User[] users) {
 		String welcomeUser = "";
-	
-			for (User user : users) {
-				if (userUsername.equalsIgnoreCase(user.getUsername()) && userPassword.equals(user.getPassword())) {
-					welcomeUser = user.getName();
-					userFound = true;
-					UserMessageOutput.validloginMessage(1, welcomeUser);
-					return user;
-				}
-			}
 
+		for (User user : users) {
+			if (userUsername.equalsIgnoreCase(user.getUsername()) && userPassword.equals(user.getPassword())) {
+				welcomeUser = user.getName();
+				userFound = true;
+				UserMessageOutput.validloginMessage(1, welcomeUser);
+				return user;
+			}
+		}
 
 		return null;
 	}
 
-	public void userValidation(String userUsername, String userPassword, String userRole, User[] users) {
+	public void userAttemptController(String userUsername, String userPassword, String userRole, User[] users,User currentUser) {
 		if (userFound == false) {
+			UserMessageOutput.invalidLoginMessage(7);
+			invalidLogin++;
 			if (invalidLogin == 4) {
 				UserMessageOutput.lockOutMessage(2);
 				System.exit(0);
 			}
-			invalidLogin++;
-			UserMessageOutput.invalidLoginMessage(7);
-			getUserCredential(userUsername, userPassword, userRole, users);
 		}
 	}
 }

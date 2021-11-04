@@ -19,14 +19,12 @@ public class UserLogin {
 	}
 
 	public static User getloginasanyUser() throws IOException {
-		UserRoleRunnableApplication userValidation = new UserRoleRunnableApplication();
-		userValidation.invalidLogin =0;
 		String anotheruserUsername = null;
 		String welcomeUser = null;
 		User[] users = new User[20];
 		users = GetandWriteFile.getuserfromFile();
 		anotheruserUsername = getpromptUser("Enter a username you want to login with: ");
-		do {
+		
 		for (User user : users) {
 			if (anotheruserUsername.equals(user.getUsername())) {
 				welcomeUser = user.getName();
@@ -35,8 +33,6 @@ public class UserLogin {
 				return user;
 			}
 		}
-		userValidation.userValidation(anotheruserUsername, anotheruserUsername, welcomeUser, users);
-		} while (userValidation.invalidLogin <= 4);
 		return null;
 
 	}

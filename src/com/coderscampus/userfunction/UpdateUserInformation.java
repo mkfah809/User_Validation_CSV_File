@@ -8,12 +8,11 @@ import com.coderscampus.user.UserRecordUpdate;
 
 public class UpdateUserInformation {
 
-	Scanner useroptionList = new Scanner(System.in);
-	UserRecordUpdate updateRecord = new UserRecordUpdate();
-	Integer userOption = useroptionList.nextInt();	
-	
 	User getusertoUpdate(User[] users, User oldUser) throws IOException {
-		while(userOption != 4) {
+		Scanner useroptionList = new Scanner(System.in);
+		UserRecordUpdate updateRecord = new UserRecordUpdate();
+		Integer userOption = useroptionList.nextInt();
+		while (userOption != 4) {
 			oldUser = userOptions(users, oldUser, updateRecord, userOption);
 			System.out.println();
 			UserPrivileges.getnormaluserPrivilege();
@@ -36,11 +35,10 @@ public class UpdateUserInformation {
 		} else if (userOption == 3) {
 			updateRecord.updatingName(users, oldUser);
 			UserPrivileges.getnormaluserPrivilege();
-		}  if (userOption == 4) {
+		}
+		if (userOption == 4) {
 			System.out.println("Thank you for using me, Bye!");
 			System.exit(0);
-		} else {
-			System.out.println("Invalid Entry!, try again");
 		}
 		return oldUser;
 	}
