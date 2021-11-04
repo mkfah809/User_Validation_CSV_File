@@ -62,11 +62,11 @@ public class UserRoleRunnableApplication {
 	private User getUserCredential(String userUsername, String userPassword, String userRole, User[] users) {
 		userUsername = UserLogin.getpromptUser("Enter your username: ");
 		userPassword = UserLogin.getpromptUser("Enter your password: ");
-		User currentUser = getoldUser(userUsername, userPassword, userRole, users);
+		User currentUser = getCurrentUser(userUsername, userPassword, userRole, users);
 		return currentUser;
 	}
 
-	private User getoldUser(String userUsername, String userPassword, String userRole, User[] users) {
+	private User getCurrentUser(String userUsername, String userPassword, String userRole, User[] users) {
 		String welcomeUser = "";
 
 		for (User user : users) {
