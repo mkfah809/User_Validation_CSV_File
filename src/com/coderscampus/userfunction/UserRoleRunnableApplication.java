@@ -45,14 +45,13 @@ public class UserRoleRunnableApplication {
 	}
 
 	private static void getUserRole(User[] users, User currentUser) throws IOException {
-		final String NORMAL_USER = "normal_user";
-		final String SUPER_USER = "super_user";
-		if (currentUser.getRole().equals(SUPER_USER)) {
+
+		if (currentUser.getRole().equals(UserPrivileges.SUPER_USER)) {
 			UpdateUserInformation UUI = new UpdateUserInformation();
 			UserPrivileges.getsuperuserPrivilege();
 			UUI.getusertoUpdate(users, currentUser);
 
-		} else if (currentUser.getRole().equals(NORMAL_USER)) {
+		} else if (currentUser.getRole().equals(UserPrivileges.NORMAL_USER)) {
 			UpdateUserInformation UUI = new UpdateUserInformation();
 			UserPrivileges.getnormaluserPrivilege();
 			UUI.getusertoUpdate(users, currentUser);
@@ -85,7 +84,7 @@ public class UserRoleRunnableApplication {
 		if (userFound == false) {
 			UserMessageOutput.invalidLoginMessage(7);
 			invalidLogin++;
-			if (invalidLogin == 4) {
+			if (invalidLogin == 5) {
 				UserMessageOutput.lockOutMessage(2);
 				System.exit(0);
 			}

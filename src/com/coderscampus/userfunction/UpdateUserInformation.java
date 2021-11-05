@@ -7,19 +7,32 @@ import com.coderscampus.user.User;
 import com.coderscampus.user.UserRecordUpdate;
 
 public class UpdateUserInformation {
+	Scanner useroptionList = new Scanner(System.in);
 
 	User getusertoUpdate(User[] users, User oldUser) throws IOException {
-		Scanner useroptionList = new Scanner(System.in);
 		UserRecordUpdate updateRecord = new UserRecordUpdate();
-		Integer userOption = useroptionList.nextInt();
-		while (userOption != 4) {
-			oldUser = userOptions(users, oldUser, updateRecord, userOption);
-			System.out.println();
-			UserPrivileges.getnormaluserPrivilege();
+		Integer userOption = null;
+		do {
 			userOption = useroptionList.nextInt();
-		}
+			if (userOption == 4) {
+				System.out.println("Thank you for using me, Bye!");
+				break;
+			}
+			oldUser = userOptions(users, oldUser, updateRecord, userOption);
+			getUserMenuBasedOnRole(oldUser);
+		} while (userOption != 4);
 		useroptionList.close();
 		return oldUser;
+	}
+
+	private String getUserMenuBasedOnRole(User oldUser) {
+		String userRole = oldUser.getRole();
+		if (userRole.equalsIgnoreCase(UserPrivileges.NORMAL_USER)) {
+			UserPrivileges.getnormaluserPrivilege();
+		} else if (userRole.equalsIgnoreCase(UserPrivileges.SUPER_USER)) {
+			UserPrivileges.getsuperuserPrivilege();
+		}
+		return userRole;
 	}
 
 	private User userOptions(User[] users, User oldUser, UserRecordUpdate updateRecord, Integer userOption)
@@ -34,11 +47,6 @@ public class UpdateUserInformation {
 
 		} else if (userOption == 3) {
 			updateRecord.updatingName(users, oldUser);
-			UserPrivileges.getnormaluserPrivilege();
-		}
-		if (userOption == 4) {
-			System.out.println("Thank you for using me, Bye!");
-			System.exit(0);
 		}
 		return oldUser;
 	}

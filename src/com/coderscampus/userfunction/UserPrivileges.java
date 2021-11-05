@@ -3,6 +3,8 @@ package com.coderscampus.userfunction;
 import com.coderscampus.user.UserMessageOutput;
 
 public class UserPrivileges {
+	final static String NORMAL_USER = "normal_user";
+	final static String SUPER_USER = "super_user";
 
 	public static void getsuperuserPrivilege() {
 		System.out.println("\nPlease choose from the following options: ");
