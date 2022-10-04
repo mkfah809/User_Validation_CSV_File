@@ -1,0 +1,54 @@
+prompt a user for a username and a password, and then use the inputs you receive to validate whether or not the username / password combination is valid.
+
+In order to validate this username / password combination, you'll need to read this information from a file (called "data.txt") and import the data into your Java application
+The file information should be stored in your Java application as an Array of User objects.
+
+Once this data is appropriately stored in your Java application, you can begin the process of prompting for username and password.
+
+Using a Scanner, you can ask the user for a username and password (this is kind of like a real-world application where you would be presented with a login screen). But for our purposes, we'll be using the console to collect the user's input.
+
+Once you've collected a username and a password via your Scanner, you can begin the process of validating this input against our Array of User objects.
+iterate through the User objects and check to see if the username/password inputs that you received via the Scanner match any of the User objects in your Array. See the "Determining a Match" section below for info on how to determine if there's a valid match or not.
+
+If a match is found then you should display a message that says:
+
+Welcome {insert user's name here}
+
+Note: you should populate the {insert user's name here} portion with the name of the User which matches the inputted username/password.
+
+Once a user has successfully logged in, the program can terminate.
+
+If no match is found then you should display a message that says:
+
+Invalid login, please try again.
+
+In the event that there's an invalid login attempt, the user should only be given 5 chances in total to login. If the user fails to login after their 5th attempt, the program should output a message that states:
+
+Too many failed login attempts, you are now locked out.
+
+And the program should terminate.
+
+
+The role that's assignment to a User will be either: normal_user or super_user
+
+Based on the User's role (when successfully logged in), they will have different actions they can perform.
+
+Hint: You should use Object Oriented principles (including inheritance) when designing this functionality. Remember the "has a" vs "is a" test that you can perform to detect possible inheritance in your design.
+
+
+Normal User
+
+When logged in as a Normal User, you should be able to update any of the fields that belong to this particular user instance, except for their role.
+
+For example, you should prompt this logged in user with the option to update their username, password or name.
+
+When the user updates their information, you should output this information back to the users.txt file and make sure that the updated information is still properly sorted. To learn how to properly sort the file, see the below section entitled "How to Sort the File".
+
+
+Super User
+
+When logged in as a Super User, you should have all the same options as a Normal User.
+
+You will also have the ability to login as any other User by specifying a valid username. When logged in as another user, you will be able to access all the options that a Normal User has access to.
+
+Note: Once you've switched to another user's account, you're not expected to be able to "exit" back into the super user's account. In other words, if you choose the "exit" option, the program will terminate.
